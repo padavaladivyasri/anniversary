@@ -14,37 +14,19 @@ const AnniversaryWebsite = () => {
     { year: 2008, event: 'Son Born', date: 'December 7' }
   ];
 
-  // Load photos from photo_data.json file
+  /// Load photos from public folder
   useEffect(() => {
-    const loadPhotos = async () => {
-      try {
-        const response = await fetch('./photo_data.json');
-        if (!response.ok) throw new Error('Failed to fetch');
-        const photoDataRaw = await response.json();
-        
-        if (photoDataRaw && Array.isArray(photoDataRaw) && photoDataRaw.length > 0) {
-          const processedPhotos = photoDataRaw.map((photo) => ({
-            url: `data:${photo.mime};base64,${photo.base64}`,
-            caption: photo.caption
-          }));
-          console.log('✅ Photos loaded:', processedPhotos.length, 'images');
-          setPhotos(processedPhotos);
-        }
-      } catch (error) {
-        console.error('Photo load error:', error);
-        // Fallback captions
-        setPhotos([
-          { url: null, caption: 'Moments Together ❤️' },
-          { url: null, caption: 'Love & Celebration 🎉' },
-          { url: null, caption: 'Silver Anniversary 🎊' },
-          { url: null, caption: 'Beautiful Together 💕' },
-          { url: null, caption: 'Family Love 👨‍👩‍👧‍👦' },
-          { url: null, caption: 'Home is with You 🏠' },
-          { url: null, caption: 'Forever Yours 💍' }
-        ]);
-      }
-    };
-    loadPhotos();
+    const photos = [
+      { url: '/image1.jpg', caption: 'Moments Together ❤️' },
+      { url: '/image2.jpg', caption: 'Love & Celebration 🎉' },
+      { url: '/image3.jpg', caption: 'Silver Anniversary 🎊' },
+      { url: '/image4.jpg', caption: 'Beautiful Together 💕' },
+      { url: '/image5.jpg', caption: 'Family Love 👨‍👩‍👧‍👦' },
+      { url: '/image6.jpg', caption: 'Home is with You 🏠' },
+      { url: '/image7.jpg', caption: 'Forever Yours 💍' }
+    ];
+    setPhotos(photos);
+    console.log('✅ Photos loaded:', photos.length, 'images');
   }, []);
 
   useEffect(() => {
