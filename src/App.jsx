@@ -298,55 +298,92 @@ const AnniversaryWebsite = () => {
   );
 
   // Timeline
-  const Timeline = () => (
-    <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-pink-100 py-16 px-4 sm:px-8 overflow-y-auto">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center text-purple-900 mb-16">
-        Your Beautiful Journey
+  const Timeline = () => {
+  return (
+    <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-pink-100 py-16 px-4 overflow-y-auto">
+      
+      <h2 className="text-3xl sm:text-4xl font-bold text-center text-purple-900 mb-12">
+        Your Beautiful Journey 💕
       </h2>
 
-      <div className="max-w-4xl mx-auto">
-        {milestones.map((milestone, index) => (
-          <div
-            key={index}
-            className="mb-12"
-            style={{
-              animation: `fadeIn 0.8s ease forwards`,
-              animationDelay: `${index * 0.3}s`,
-              opacity: 0
-            }}
-          >
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 text-white font-bold text-xl">
-                  {milestone.year}
-                </div>
-              </div>
+      <div className="max-w-4xl mx-auto space-y-8">
 
-              <div className="ml-4 sm:ml-8 flex-grow">
-                <div className="bg-white rounded-lg shadow-lg p-5 sm:p-6 border-2 border-pink-300">
-                  <h3 className="text-xl sm:text-2xl font-bold text-purple-900">
-                    {milestone.event}
-                  </h3>
-
-                  <p className="text-pink-600 mt-2">
-                    {milestone.date}
-                  </p>
-                </div>
-              </div>
-            </div>
+        {/* 2001 */}
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold">
+            2001
           </div>
-        ))}
+
+          <div className="flex-1 bg-white rounded-xl shadow-lg p-6 border-2 border-pink-300">
+            <h3 className="text-xl sm:text-2xl font-bold text-purple-900">
+              Wedding Day 💍
+            </h3>
+            <p className="text-pink-600 mt-2">
+              August 10
+            </p>
+          </div>
+        </div>
+
+        {/* 2004 */}
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold">
+            2004
+          </div>
+
+          <div className="flex-1 bg-white rounded-xl shadow-lg p-6 border-2 border-pink-300">
+            <h3 className="text-xl sm:text-2xl font-bold text-purple-900">
+              First Daughter Born 👧
+            </h3>
+            <p className="text-pink-600 mt-2">
+              July 30
+            </p>
+          </div>
+        </div>
+
+        {/* 2006 */}
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold">
+            2006
+          </div>
+
+          <div className="flex-1 bg-white rounded-xl shadow-lg p-6 border-2 border-pink-300">
+            <h3 className="text-xl sm:text-2xl font-bold text-purple-900">
+              Second Daughter Born 👧
+            </h3>
+            <p className="text-pink-600 mt-2">
+              May 22
+            </p>
+          </div>
+        </div>
+
+        {/* 2008 */}
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold">
+            2008
+          </div>
+
+          <div className="flex-1 bg-white rounded-xl shadow-lg p-6 border-2 border-pink-300">
+            <h3 className="text-xl sm:text-2xl font-bold text-purple-900">
+              Son Born 👦
+            </h3>
+            <p className="text-pink-600 mt-2">
+              December 7
+            </p>
+          </div>
+        </div>
+
       </div>
 
       <button
         onClick={() => setCurrentScreen('slideshow')}
         className="block mx-auto mt-12 bg-purple-500 hover:bg-purple-600 text-white px-8 py-3 rounded-full transition text-lg"
       >
-        View Memory Gallery
+        View Memory Gallery 📸
       </button>
+
     </div>
   );
-
+};
   // Photo Slideshow
   const PhotoSlideshow = () => {
     const [photoIndex, setPhotoIndex] = useState(0);
