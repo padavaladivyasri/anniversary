@@ -18,31 +18,31 @@ const AnniversaryWebsite = () => {
   useEffect(() => {
     const photoList = [
       {
-        url: '/image1.jpg',
+        url: `${import.meta.env.BASE_URL}image1.jpg`,
         caption: 'Moments Together ❤️'
       },
       {
-        url: '/image2.jpg',
+        url: `${import.meta.env.BASE_URL}image2.jpg`,
         caption: 'Love & Celebration 🎉'
       },
       {
-        url: '/image3.jpg',
+        url: `${import.meta.env.BASE_URL}image3.jpg`,
         caption: 'Silver Anniversary 🎊'
       },
       {
-        url: '/image4.jpg',
+        url: `${import.meta.env.BASE_URL}image4.jpg`,
         caption: 'Beautiful Together 💕'
       },
       {
-        url: '/image5.jpg',
+        url: `${import.meta.env.BASE_URL}image5.jpg`,
         caption: 'Family Love 👨‍👩‍👧‍👦'
       },
       {
-        url: '/image6.jpg',
+        url: `${import.meta.env.BASE_URL}image6.jpg`,
         caption: 'Home is with You 🏠'
       },
       {
-        url: '/image7.jpg',
+        url: `${import.meta.env.BASE_URL}image7.jpg`,
         caption: 'Forever Yours 💍'
       }
     ];
@@ -51,7 +51,7 @@ const AnniversaryWebsite = () => {
     console.log('✅ Photos loaded:', photoList.length, 'images');
   }, []);
 
-  // Loading screen timer
+  // Loading timer
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentScreen('starry');
@@ -60,14 +60,14 @@ const AnniversaryWebsite = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Confetti component
+  // Confetti
   const Confetti = () => {
     return (
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-50">
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
-            className="absolute animate-pulse"
+            className="absolute"
             style={{
               left: Math.random() * 100 + '%',
               top: '-10px',
@@ -170,6 +170,18 @@ const AnniversaryWebsite = () => {
             transform: translateY(100vh) rotate(360deg);
           }
         }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
       `}</style>
 
       <div
@@ -218,7 +230,7 @@ const AnniversaryWebsite = () => {
           animation: 'heartbeat 0.6s ease-in-out infinite'
         }}
       >
-        <Heart className="w-40 h-40 sm:w-48 sm:h-48 text-red-500 fill-red-500 cursor-pointer" />
+        <Heart className="w-40 h-40 sm:w-48 sm:h-48 text-red-500 fill-red-500" />
       </div>
 
       <p className="mt-8 text-2xl font-bold text-pink-600">
@@ -229,7 +241,7 @@ const AnniversaryWebsite = () => {
         <div
           className="h-full bg-pink-500 rounded-full transition-all"
           style={{
-            width: (tapCount / 25) * 100 + '%'
+            width: `${(tapCount / 25) * 100}%`
           }}
         />
       </div>
@@ -296,9 +308,11 @@ const AnniversaryWebsite = () => {
         {milestones.map((milestone, index) => (
           <div
             key={index}
-            className="mb-12 animate-fadeIn"
+            className="mb-12"
             style={{
-              animationDelay: index * 0.3 + 's'
+              animation: `fadeIn 0.8s ease forwards`,
+              animationDelay: `${index * 0.3}s`,
+              opacity: 0
             }}
           >
             <div className="flex items-center">
@@ -359,7 +373,6 @@ const AnniversaryWebsite = () => {
         <div className="max-w-2xl w-full">
           <div className="bg-white rounded-lg shadow-2xl overflow-hidden border-4 sm:border-8 border-pink-300">
 
-            {/* Photo */}
             {!imageError ? (
               <div className="w-full h-64 sm:h-80 md:h-96 bg-gray-100">
                 <img
@@ -390,14 +403,13 @@ const AnniversaryWebsite = () => {
                     Unable to load photo
                   </p>
 
-                  <p className="text-gray-500 mt-2 text-sm">
+                  <p className="text-gray-500 mt-2 text-sm break-all">
                     {currentPhoto.url}
                   </p>
                 </div>
               </div>
             )}
 
-            {/* Caption */}
             <div className="p-5 sm:p-6">
               <p className="text-lg sm:text-xl font-bold text-center text-purple-900">
                 {currentPhoto.caption}
@@ -409,7 +421,6 @@ const AnniversaryWebsite = () => {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
           <div className="flex justify-center gap-3 sm:gap-4 mt-8 flex-wrap">
             <button
               onClick={() => {
@@ -436,7 +447,6 @@ const AnniversaryWebsite = () => {
             </button>
           </div>
 
-          {/* Letter Button */}
           <button
             onClick={() => setCurrentScreen('letter')}
             className="block mx-auto mt-8 bg-purple-500 hover:bg-purple-600 text-white px-8 py-3 rounded-full transition"
@@ -494,7 +504,7 @@ const AnniversaryWebsite = () => {
             <p className="font-bold">
               With all my love,
               <br />
-              Your loving daughter,{' '}
+              Your loving daughter{' '}
               <span className="text-pink-600">
                 Divya
               </span>{' '}
@@ -585,7 +595,7 @@ const AnniversaryWebsite = () => {
       {[...Array(30)].map((_, i) => (
         <div
           key={i}
-          className="absolute"
+          className="absolute pointer-events-none"
           style={{
             left: Math.random() * 100 + '%',
             top: Math.random() * 100 + '%',
@@ -601,30 +611,6 @@ const AnniversaryWebsite = () => {
           ]}
         </div>
       ))}
-
-      <style>{`
-        @keyframes bounce {
-          0%, 100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
 
       <div className="text-center relative z-10 max-w-3xl">
         <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
